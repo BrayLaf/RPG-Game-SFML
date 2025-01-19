@@ -7,6 +7,10 @@ private:
 	sf::Texture texture;
 public:
 	sf::Sprite sprite;
+
+	sf::RectangleShape boundRect;
+
+	sf::Vector2i size;
 public:
 	void Initialize();// on start
 	void Load();// on start

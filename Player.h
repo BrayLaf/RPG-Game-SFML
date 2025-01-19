@@ -8,6 +8,9 @@ private:
 	std::vector<sf::RectangleShape> bullets;
 	float bulletSpeed = 20.0f;
 
+	sf::RectangleShape boundRect;
+
+	sf::Vector2i size;
 public:
 	sf::Sprite sprite;
 public:
