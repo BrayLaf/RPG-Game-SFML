@@ -19,19 +19,6 @@ int main()
     //----------------------LOAD----------------
     player.Load();
     skeleton.Load();
-    // ---------------BACKGROUND---------
-    sf::Texture ground;
-    sf::Sprite back;
-    if (ground.loadFromFile("Assets/Background/background.png")) {
-        std::cout << "background loaded\n";
-        back.setTexture(ground);
-        back.setPosition(0, 0);
-        back.scale(sf::Vector2f(1, 1));
-    }
-    else {
-        std::cout << "background failed\n";
-    }
-    // ---------------BACKGROUND--------- 
     //--------------LOAD-----------------------
     //------------------Game loop 
     while (window.isOpen())
@@ -45,18 +32,14 @@ int main()
         }
         skeleton.Update();
         player.Update(skeleton);
-
-       
        //-----------UPDATE-------------
 
     //-------------DRAW------
         window.clear(sf::Color::Black);
 
-        window.draw(back);
         skeleton.Draw(window);
         player.Draw(window);
         
-      
         window.display();
     //-------------DRAW------
     }
