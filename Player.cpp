@@ -36,33 +36,21 @@ void Player::Load()
     }
 }
 
-void Player::Update(Skeleton& skeleton)
+void Player::Update(float deltaTime, Skeleton& skeleton)
 {
     sf::Vector2f position = sprite.getPosition();
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
-        sprite.setPosition(position + sf::Vector2f(10, 0));
-        yIndex = 3;
-        animate(xIndex, yIndex);
-        sprite.setTextureRect(sf::IntRect(xIndex * 64, yIndex * 64, 64, 64));
+        sprite.setPosition(position + sf::Vector2f(1, 0) * playerSpeed * deltaTime);
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
-        sprite.setPosition(position - sf::Vector2f(0, 10));
-        yIndex = 0;
-        animate(xIndex, yIndex);
-        sprite.setTextureRect(sf::IntRect(xIndex * 64, yIndex * 64, 64, 64));
+        sprite.setPosition(position - sf::Vector2f(0, 1) * playerSpeed * deltaTime);
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-        sprite.setPosition(position - sf::Vector2f(10, 0));
-        yIndex = 1;
-        animate(xIndex, yIndex);
-        sprite.setTextureRect(sf::IntRect(xIndex * 64, yIndex * 64, 64, 64));
+        sprite.setPosition(position - sf::Vector2f(1, 0) * playerSpeed * deltaTime);
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
-        sprite.setPosition(position + sf::Vector2f(0, 10));
-        yIndex = 2;
-        animate(xIndex, yIndex);
-        sprite.setTextureRect(sf::IntRect(xIndex * 64, yIndex * 64, 64, 64));
+        sprite.setPosition(position + sf::Vector2f(0, 1) * playerSpeed * deltaTime);
     }
 
     if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left)) {
@@ -74,7 +62,7 @@ void Player::Update(Skeleton& skeleton)
     }for (size_t i = 0; i < bullets.size(); i++) {
         sf::Vector2f bulletDirection = skeleton.sprite.getPosition() - bullets[i].getPosition();
         bulletDirection = Math::normalizeVector(bulletDirection);
-        bullets[i].setPosition(bullets[i].getPosition() + bulletDirection * bulletSpeed);
+        bullets[i].setPosition(bullets[i].getPosition() + bulletDirection * bulletSpeed * deltaTime);
 
     }
 

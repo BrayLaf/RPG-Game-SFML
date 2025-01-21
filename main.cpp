@@ -7,7 +7,7 @@ int main()
     sf::ContextSettings settings;
     settings.antialiasingLevel = 8;
     sf::RenderWindow window(sf::VideoMode(1280, 720), "Game", sf::Style::Default, settings);
-    window.setFramerateLimit(30);
+    window.setFramerateLimit(60);
 
     Player player;
     player.Initialize();
@@ -20,18 +20,30 @@ int main()
     player.Load();
     skeleton.Load();
     //--------------LOAD-----------------------
-    //------------------Game loop 
+    //------------------GAME LOOP------------
+
+    sf::Clock clock;
+
     while (window.isOpen())
     {
-        // ---------------- UPDATE
+        // ----------------UPDATE------------
+        
+        sf::Time deltaTimer = clock.restart();
+        float deltaTime = deltaTimer.asMilliseconds();
+        float fps = 1.0f / deltaTimer.asSeconds();
+
+        std::cout << fps << std::endl;
+
         sf::Event event;
         while (window.pollEvent(event))
         {
             if (event.type == sf::Event::Closed)
                 window.close();
         }
-        skeleton.Update();
-        player.Update(skeleton);
+
+
+        skeleton.Update(deltaTime);
+        player.Update(deltaTime, skeleton);
        //-----------UPDATE-------------
 
     //-------------DRAW------
@@ -42,7 +54,8 @@ int main()
         
         window.display();
     //-------------DRAW------
+
     }
-    //--------------GAME LOOP------------
+    //------------------GAME LOOP------------
     return 0;
 }

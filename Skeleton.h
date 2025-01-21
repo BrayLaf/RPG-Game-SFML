@@ -14,7 +14,7 @@ public:
 public:
 	void Initialize();// on start
 	void Load();// on start
-	void Update();// once per frame
+	void Update(float deltaTime);// once per frame
 	void Draw(sf::RenderWindow& window);// once per frame
 };
 

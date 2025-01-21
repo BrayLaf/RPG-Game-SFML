@@ -6,8 +6,8 @@ private:
 	sf::Texture texture;
 
 	std::vector<sf::RectangleShape> bullets;
-	float bulletSpeed = 20.0f;
-
+	float bulletSpeed = 5.0f;
+	float playerSpeed = 2.0f;
 	sf::RectangleShape boundRect;
 
 	sf::Vector2i size;
@@ -16,6 +16,6 @@ public:
 public:
 	void Initialize();// on start
 	void Load();// on start
-	void Update(Skeleton& skeleton);// once per frame
+	void Update(float deltaTime, Skeleton& skeleton);// once per frame
 	void Draw(sf::RenderWindow& window);// once per frame
 };
