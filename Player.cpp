@@ -2,13 +2,13 @@
 #include <iostream>
 #include "Math.h"
 
-void animate(int& xIndex, int yIndex) {
+/*void animate(int& xIndex, int yIndex) {
     if (xIndex >= 8) {
         xIndex = 0;
     }
     ++xIndex;
 
-}
+}*/
 int xIndex = 0, yIndex = 0;
 
 void Player::Initialize()

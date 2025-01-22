@@ -7,7 +7,7 @@ int main()
     sf::ContextSettings settings;
     settings.antialiasingLevel = 8;
     sf::RenderWindow window(sf::VideoMode(1280, 720), "Game", sf::Style::Default, settings);
-    window.setFramerateLimit(60);
+    window.setFramerateLimit(360);
 
     Player player;
     player.Initialize();
